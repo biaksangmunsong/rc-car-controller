@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect } from "react"
+import { App as NativeApp } from "@capacitor/app"
+import useStore from "./store"
+import Connected from "./components/Connected"
+import NotConnected from "./components/NotConnected"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const App = () => {
+	
+	const connected = useStore(state => state.connected)
+
+	// handle back button
+	useEffect(() => {
+		NativeApp.addListener("backButton", () => {
+			if (window.location.pathname !== "/" || window.location.search){
+				window.history.back()
+			}
+			else {
+				NativeApp.exitApp()
+			}
+		})
+	}, [])
+	
+	return (
+		<div className="
+			block
+			w-full
+			h-full
+			fixed
+			z-[10]
+			top-0
+			left-0
+			overflow-hidden
+		">
+			{
+				connected ?
+				<Connected/> :
+				<NotConnected/>
+			}
+		</div>
+	)
+
 }
 
-export default App;
+export default App

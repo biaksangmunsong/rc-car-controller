@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">RC Car</string>
+    <string name="title_activity_main">RC Car</string>
+    <string name="package_name">rc.car.app.android</string>
+    <string name="custom_url_scheme">rc.car.app.android</string>
+</resources>

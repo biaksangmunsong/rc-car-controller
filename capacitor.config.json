@@ -1,0 +1,12 @@
+{
+  "appId": "rc.car.app.android",
+  "appName": "RC Car",
+  "webDir": "build",
+  "server": {
+		"androidScheme": "http"
+	},
+  "android": {
+		"useLegacyBridge": true,
+		"cleartext": true
+	}
+}
